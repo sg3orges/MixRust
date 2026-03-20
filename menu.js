@@ -31,4 +31,31 @@ window.addEventListener('DOMContentLoaded', () => {
       closeMenu();
     }
   });
+
+  // Slider équipe (un cadre à la fois)
+  const slider = document.querySelector('[data-team-slider]');
+  if (slider) {
+    const track = slider.querySelector('.team-track');
+    const cards = Array.from(slider.querySelectorAll('.team-card'));
+    const prevBtn = slider.querySelector('.team-btn.prev');
+    const nextBtn = slider.querySelector('.team-btn.next');
+    let index = 0;
+    const total = cards.length;
+
+    const update = () => {
+      track.style.transform = `translateX(-${index * 100}%)`;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      index = (index - 1 + total) % total;
+      update();
+    });
+
+    nextBtn.addEventListener('click', () => {
+      index = (index + 1) % total;
+      update();
+    });
+
+    update();
+  }
 });
