@@ -1,4 +1,3 @@
-// Gestion du menu latéral sur mobile
 window.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.burger');
   const navLinks = document.querySelector('.nav-links');
@@ -32,7 +31,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Slider équipe (un cadre à la fois)
+
   const slider = document.querySelector('[data-team-slider]');
   if (slider) {
     const track = slider.querySelector('.team-track');
@@ -58,4 +57,23 @@ window.addEventListener('DOMContentLoaded', () => {
 
     update();
   }
+
+
+  const changelogButtons = document.querySelectorAll(".changelog-header");
+
+  changelogButtons.forEach(button => {
+    button.addEventListener("click", () => {
+
+     
+      document.querySelectorAll(".changelog-item").forEach(item => {
+        if(item !== button.parentElement){
+          item.classList.remove("active");
+        }
+      });
+
+      
+      button.parentElement.classList.toggle("active");
+    });
+  });
+
 });
